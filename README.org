@@ -3,8 +3,12 @@
 A ~shared_object~ linking mode was recently added to [[https://github.com/ocaml/dune][dune]]. I tried to take
 advantage of it to simplify a project of mine without success.
 
-Quite often, I'm sharing my OCaml work as standard shared objects (aka =.so= or
+Quite often, I'm sharing my =OCaml= work as standard shared objects (aka =.so= or
 =.dll=).
 
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
+
+# lib
+
+A two functions pure =OCaml= lib.
