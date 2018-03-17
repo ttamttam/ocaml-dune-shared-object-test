@@ -12,3 +12,9 @@ get help on a concrete project).
 * lib
 
 A two functions pure =OCaml= lib.
+
+#+NAME: mylib.mli
+#+BEGIN_SRC ocaml
+val add: int -> int -> int
+val substract: int -> int -> int
+#+END_SRC
