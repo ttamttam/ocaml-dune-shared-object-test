@@ -9,6 +9,6 @@ Quite often, I'm sharing my =OCaml= work as standard shared objects (aka =.so= o
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
 
-# lib
+* lib
 
 A two functions pure =OCaml= lib.
