@@ -26,6 +26,13 @@ val substract: int -> int -> int
 The =manual/= directory contains my current working project, which I'd like to
 simplify, while the =automatic= will eventually host the improved solution.
 
+* Makefile targets
+
+  * clean
+  * manualtest: builds a shared DLL the complicated way and run a small C test program on it
+  * directdll: just build a shared DLL (attempt)
+  * directtest: run a small C test program on the (directdll). Well. It fails to compile.
+
 * manual/
 
 ** dll/
