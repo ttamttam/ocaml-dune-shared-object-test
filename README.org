@@ -57,7 +57,7 @@ simplify, while the =automatic= will eventually host the improved solution.
   This directory is a *failing* attempt to build another version: ~direct.so~.
 
   It builds with:
-  :make directdll
+  : make directdll
 
   But it is not the library I would expect (I can't find the expected symbols in
   it):
