@@ -1,9 +1,15 @@
 #include <assert.h>
 #include <caml/callback.h>
+#include <caml/memory.h>
 
 #include "myclib.h"
 
 static int mylib_init_done = 0;
+
+value dummy(value u){
+  CAMLparam1(u);
+  CAMLreturn(Val_unit);
+}
 
 int init_done(){
   return mylib_init_done;

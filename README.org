@@ -9,6 +9,8 @@ advantage of it to simplify my =jbuild= files. Without success.
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
 
+*Thanks to @diml who pointed my mistakes, this now works!*
+
 Tests were performed with development version of =jbuilder=:
 : $ jbuilder --version
 : 1.0+beta19-33-g73231bf
@@ -30,8 +32,8 @@ simplify, while the =automatic= will eventually host the improved solution.
 
   * clean
   * manualtest: builds a shared DLL the complicated way and run a small C test program on it
-  * directdll: just build a shared DLL (attempt)
-  * directtest: run a small C test program on the (directdll). Well. It fails to compile.
+  * directdll: just build a shared DLL
+  * directtest: run a small C test program on the directdll
 
 * manual/
 
@@ -61,39 +63,13 @@ simplify, while the =automatic= will eventually host the improved solution.
 
 * automatic/
 
-  This directory is a *failing* attempt to build another version: ~direct.so~.
+  This directory is a +*failing*+ *working* attempt to build another version: ~direct.so~.
 
   It builds with:
   : make directdll
-
-  But it is not the library I would expect (I can't find the expected symbols in
-  it):
-
-  #+BEGIN_SRC bash
-  $ objdump -t _build/default/manual/dll/myclib.so | grep mylib
-  0000000000000000 l    df *ABS*	0000000000000000              mylib_stub.c
-  0000000000260358 l     O .bss	0000000000000004              mylib_init_done
-  0000000000031050 g     F .text	0000000000000030              init_mylib
-  $ objdump -t _build/default/automatic/dll/direct.so | grep mylib
-  #+END_SRC
 
 ** test/
 
    This directory contains a C test file.
 
    To test, just do ~make directtest~:
-   #+BEGIN_SRC bash
-$ make directtest
-jbuilder build @runautomatictest
-         gcc automatic/test/direct.so,automatic/test/montest.exe,automatic/test/myclib.h (exit 1)
-(cd _build/default/automatic/test && /usr/bin/gcc -O2 -fno-strict-aliasing -fwrapv -fPIC -o montest.exe -Wl,-rpath,. direct.so test.c)
-/tmp/cclBM5MH.o : Dans la fonction « main » :
-test.c:(.text.startup+0x4) : référence indéfinie vers « init_done »
-test.c:(.text.startup+0x2a) : référence indéfinie vers « init_mylib »
-test.c:(.text.startup+0x31) : référence indéfinie vers « init_done »
-test.c:(.text.startup+0x58) : référence indéfinie vers « do_add »
-test.c:(.text.startup+0x7f) : référence indéfinie vers « do_substract »
-collect2: error: ld returned 1 exit status
-Makefile:7 : la recette pour la cible « directtest » a échouée
-make: *** [directtest] Erreur 1
-   #+END_SRC
