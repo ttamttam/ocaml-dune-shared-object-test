@@ -37,7 +37,7 @@ simplify, while the =automatic= will eventually host the improved solution.
    * =mylib_mlstub.ml=: the =OCaml= part of the library (registering functions
      from  =mylib=)
 
-** TODO test/
+** test/
 
    This directory contains a C test file.
 
@@ -69,3 +69,24 @@ simplify, while the =automatic= will eventually host the improved solution.
   0000000000031050 g     F .text	0000000000000030              init_mylib
   $ objdump -t _build/default/automatic/dll/direct.so | grep mylib
   #+END_SRC
+
+** test/
+
+   This directory contains a C test file.
+
+   To test, just do ~make directtest~:
+   #+BEGIN_SRC bash
+$ make directtest
+jbuilder build @runautomatictest
+         gcc automatic/test/direct.so,automatic/test/montest.exe,automatic/test/myclib.h (exit 1)
+(cd _build/default/automatic/test && /usr/bin/gcc -O2 -fno-strict-aliasing -fwrapv -fPIC -o montest.exe -Wl,-rpath,. direct.so test.c)
+/tmp/cclBM5MH.o : Dans la fonction « main » :
+test.c:(.text.startup+0x4) : référence indéfinie vers « init_done »
+test.c:(.text.startup+0x2a) : référence indéfinie vers « init_mylib »
+test.c:(.text.startup+0x31) : référence indéfinie vers « init_done »
+test.c:(.text.startup+0x58) : référence indéfinie vers « do_add »
+test.c:(.text.startup+0x7f) : référence indéfinie vers « do_substract »
+collect2: error: ld returned 1 exit status
+Makefile:7 : la recette pour la cible « directtest » a échouée
+make: *** [directtest] Erreur 1
+   #+END_SRC
