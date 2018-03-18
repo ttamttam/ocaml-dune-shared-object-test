@@ -3,19 +3,19 @@
 (rule(
 
      (targets (montest.exe))
-     (deps (${ROOT}/manual/myclib.so
-            ${ROOT}/manual/myclib.h
+     (deps (${ROOT}/manual/dll/myclib.so
+            ${ROOT}/manual/dll/myclib.h
             test.c))
      (action
       (progn
-       (copy ${ROOT}/manual/myclib.h myclib.h)
-       (copy ${ROOT}/manual/myclib.so myclib.so)
+       (copy ${ROOT}/manual/dll/myclib.h myclib.h)
+       (copy ${ROOT}/manual/dll/myclib.so myclib.so)
        (run ${CC} -o ${@} -Wl,-rpath,. myclib.so test.c)
      ))
 ))
 
 (alias(
-      (name runtest)
+      (name runmanualtest)
       (deps (montest.exe))
       (action (run ${<}))
 ))

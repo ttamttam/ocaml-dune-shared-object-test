@@ -1,0 +1,8 @@
+(jbuild_version 1)
+
+(executable(
+           (name direct)
+           (libraries (mylibstubed))
+(ocamlopt_flags (:standard -linkall))
+           (modes (shared_object))
+))

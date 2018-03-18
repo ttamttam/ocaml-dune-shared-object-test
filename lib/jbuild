@@ -1,5 +1,2 @@
 (jbuild_version 1)
-(library(
-        (name mylib)
-        (public_name odsot)
-))
+(library((name mylib)))

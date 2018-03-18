@@ -8,23 +8,23 @@
 
 (rule(
      (targets (mylib_mlstub.cmo mylib_mlstub.cmi))
-     (deps (mylib_mlstub.ml ../lib/mylib.cma))
-     (action (run ${OCAMLC} -c -I ../lib/.mylib.objs mylib.cma ${<}))
+     (deps (mylib_mlstub.ml ../../lib/mylib.cma))
+     (action (run ${OCAMLC} -c -I ../../lib/.mylib.objs mylib.cma ${<}))
 ))
 
 (rule(
      (targets (mylib_mlstub.cmx mylib_mlstub.o))
-     (deps (mylib_mlstub.ml mylib_mlstub.cmi ../lib/mylib.cmxa))
-     (action (run ${OCAMLOPT} -c -I ../lib/.mylib.objs mylib.cmxa ${<}))
+     (deps (mylib_mlstub.ml mylib_mlstub.cmi ../../lib/mylib.cmxa))
+     (action (run ${OCAMLOPT} -c -I ../../lib/.mylib.objs mylib.cmxa ${<}))
 ))
 
 (rule(
      (targets (myclib.so))
-     (deps (mylib_mlstub.cmx mylib_stub.o ../lib/mylib.cmxa))
+     (deps (mylib_mlstub.cmx mylib_stub.o ../../lib/mylib.cmxa))
      (action (run ${OCAMLOPT} -o ${@}
                -output-obj
                -runtime-variant _pic
-               -I ../lib
-               -I ../lib/.mylib.objs
+               -I ../../lib
+               -I ../../lib/.mylib.objs
                mylib.cmxa mylib_mlstub.cmx mylib_stub.o))
 ))
