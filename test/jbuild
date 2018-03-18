@@ -1,0 +1,21 @@
+(jbuild_version 1)
+
+(rule(
+
+     (targets (montest.exe))
+     (deps (${ROOT}/manual/myclib.so
+            ${ROOT}/manual/myclib.h
+            test.c))
+     (action
+      (progn
+       (copy ${ROOT}/manual/myclib.h myclib.h)
+       (copy ${ROOT}/manual/myclib.so myclib.so)
+       (run ${CC} -o ${@} -Wl,-rpath,. myclib.so test.c)
+     ))
+))
+
+(alias(
+      (name runtest)
+      (deps (montest.exe))
+      (action (run ${<}))
+))

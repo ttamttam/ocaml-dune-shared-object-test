@@ -9,12 +9,36 @@ Quite often, I'm sharing my =OCaml= work as standard shared objects (aka =.so= o
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
 
-* lib
+* lib/
 
-A two functions pure =OCaml= lib.
+The =lib/= directory is there to provide a two functions pure =OCaml= lib: =mylib=.
 
 #+NAME: mylib.mli
 #+BEGIN_SRC ocaml
 val add: int -> int -> int
 val substract: int -> int -> int
+#+END_SRC
+
+* manual/
+
+I want to expose this library to =C= users as a shared objects library: =myclib=
+
+The =manual/= directory contains:
+- =myclib.h=
+- =mylib_stub.c=: the =C= part of the shared library
+- =mylib_mlstub.ml=: the =OCaml= part of the library (registering functions from
+  =mylib=)
+
+* test/
+
+The =test/= directory contains a C test file.
+
+To test, just do ~jbuilder build @runtest~:
+#+BEGIN_SRC bash
+$ jbuilder build @runtest
+     montest alias test/runtest
+Avant init : 0
+Après init : 1
+Somme : 5 + 7 = 12
+Soustraction : 5 - 7 = -2
 #+END_SRC
