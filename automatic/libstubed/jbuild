@@ -3,6 +3,4 @@
         (name mylibstubed)
         (libraries (mylib))
         (c_names (mylib_stub))
-        (install_c_headers (myclib.h))
-
 ))

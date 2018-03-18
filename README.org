@@ -13,9 +13,9 @@ Tests were performed with development version of =jbuilder=:
 : $ jbuilder --version
 : 1.0+beta19-33-g73231bf
 
-* lib/
-
-The =lib/= directory is there to provide a two functions pure =OCaml= lib: =mylib=.
+The =lib/= directory is there to provide a two functions pure =OCaml= lib:
+=mylib=, which is to be shared to =C= users (I'll jump later to a more complex
+OCaml library that will have to be linked to third parties C lib).
 
 #+NAME: mylib.mli
 #+BEGIN_SRC ocaml
@@ -23,8 +23,8 @@ val add: int -> int -> int
 val substract: int -> int -> int
 #+END_SRC
 
-This is the =OCaml= library to be shared to =C= users (I'll jump later to more
-complex OCaml libraries that would have to be linked to third parties C lib).
+The =manual/= directory contains my current working project, which I'd like to
+simplify, while the =automatic= will eventually host the improved solution.
 
 * manual/
 
@@ -51,3 +51,21 @@ complex OCaml libraries that would have to be linked to third parties C lib).
    Somme : 5 + 7 = 12
    Soustraction : 5 - 7 = -2
    #+END_SRC
+
+* automatic/
+
+  This directory is an **failing** attempt to build another version: ~direct.so~.
+
+  It builds with:
+  :make directdll
+
+  But it is not the library I would expect (I can't find the expected symbols in
+  it):
+
+  #+BEGIN_SRC bash
+  $ objdump -t _build/default/manual/dll/myclib.so | grep mylib
+  0000000000000000 l    df *ABS*	0000000000000000              mylib_stub.c
+  0000000000260358 l     O .bss	0000000000000004              mylib_init_done
+  0000000000031050 g     F .text	0000000000000030              init_mylib
+  $ objdump -t _build/default/automatic/dll/direct.so | grep mylib
+  #+END_SRC
