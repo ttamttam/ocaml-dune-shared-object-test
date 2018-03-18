@@ -1,7 +1,7 @@
-.PHONY: all clean
+.PHONY: runtest clean
 
-all:
-	jbuilder build --display=short
+runtest:
+	jbuilder build @runtest
 
 clean:
 	jbuilder clean

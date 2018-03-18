@@ -9,6 +9,10 @@ Quite often, I'm sharing my =OCaml= work as standard shared objects (aka =.so= o
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
 
+Tests were performed with development version of =jbuilder=:
+: $ jbuilder --version
+: 1.0+beta19-33-g73231bf
+
 * lib/
 
 The =lib/= directory is there to provide a two functions pure =OCaml= lib: =mylib=.
@@ -33,9 +37,10 @@ The =manual/= directory contains:
 
 The =test/= directory contains a C test file.
 
-To test, just do ~jbuilder build @runtest~:
+To test, just do ~make~:
 #+BEGIN_SRC bash
-$ jbuilder build @runtest
+$ make
+jbuilder build @runtest
      montest alias test/runtest
 Avant init : 0
 Après init : 1
