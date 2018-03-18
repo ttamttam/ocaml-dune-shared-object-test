@@ -54,7 +54,7 @@ simplify, while the =automatic= will eventually host the improved solution.
 
 * automatic/
 
-  This directory is an **failing** attempt to build another version: ~direct.so~.
+  This directory is an *failing* attempt to build another version: ~direct.so~.
 
   It builds with:
   :make directdll
