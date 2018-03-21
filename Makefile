@@ -1,13 +1,12 @@
-.PHONY: manualtest clean directdll
+.PHONY: help test clean
 
-manualtest:
-	jbuilder build @runmanualtest
+help:
+	@echo "make targets:"
+	@echo " - test: build and test the automatic portable way"
+	@echo " - clean"
 
-directtest:
+test:
 	jbuilder build @runautomatictest
-
-directdll:
-	jbuilder build automatic/dll/direct.so
 
 clean:
 	jbuilder clean

@@ -3,14 +3,14 @@
 (rule(
 
      (targets (montest.exe))
-     (deps (${ROOT}/automatic/dll/direct.so
+     (deps (${ROOT}/automatic/dll/direct${ext_dll}
             ${ROOT}/automatic/libstubed/myclib.h
             test.c))
      (action
       (progn
        (copy ${ROOT}/automatic/libstubed/myclib.h myclib.h)
-       (copy ${ROOT}/automatic/dll/direct.so direct.so)
-       (run ${CC} -o ${@} -Wl,-rpath,. direct.so test.c)
+       (copy ${ROOT}/automatic/dll/direct${ext_dll} direct${ext_dll})
+       (run ${CC} -o ${@} -Wl,-rpath,. direct${ext_dll} test.c)
      ))
 ))
 
