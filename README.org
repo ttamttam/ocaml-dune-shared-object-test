@@ -25,51 +25,18 @@ val add: int -> int -> int
 val substract: int -> int -> int
 #+END_SRC
 
-The =manual/= directory contains my current working project, which I'd like to
-simplify, while the =automatic= will eventually host the improved solution.
-
 * Makefile targets
 
+  * help
+  * test
   * clean
-  * manualtest: builds a shared DLL the complicated way and run a small C test program on it
-  * directdll: just build a shared DLL
-  * directtest: run a small C test program on the directdll
+  
+* automatic/ contains interesting stuff
 
-* manual/
-
-** dll/
-
-   This directory builds =myclib.so= from:
-
-   * =myclib.h=
-   * =mylib_stub.c=: the =C= part of the shared library
-   * =mylib_mlstub.ml=: the =OCaml= part of the library (registering functions
-     from  =mylib=)
+  This directory contains a more portable way to build ~direct.so~.
 
 ** test/
 
-   This directory contains a C test file.
+   This directory contains a C test file that makes use of ~direct.so~.
 
-   To test, just do ~make manualtest~:
-   #+BEGIN_SRC bash
-   $ make manualtest
-   jbuilder build @runmanualtest
-        montest alias manual/test/runmanualtest
-   Avant init : 0
-   Après init : 1
-   Somme : 5 + 7 = 12
-   Soustraction : 5 - 7 = -2
-   #+END_SRC
-
-* automatic/
-
-  This directory is a +*failing*+ *working* attempt to build another version: ~direct.so~.
-
-  It builds with:
-  : make directdll
-
-** test/
-
-   This directory contains a C test file.
-
-   To test, just do ~make directtest~:
+   To test, just do ~make test~:
