@@ -1,7 +1,7 @@
 (jbuild_version 1)
 
 (executable(
-           (name direct)
-           (libraries (mylibstubed))
+           (name direct)                ;; direct.ml is a void file, to satisfy this executable rule
+           (libraries (mylibstubed))    ;; It will link mylibstubed as a shared lib.
            (modes (shared_object))
 ))
