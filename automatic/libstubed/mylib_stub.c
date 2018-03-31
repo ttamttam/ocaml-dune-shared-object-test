@@ -6,6 +6,8 @@
 
 static int mylib_init_done = 0;
 
+// Fake function declared in the .ml file, but never used
+// (this is to force the linking of this C file)
 value dummy(value u){
   CAMLparam1(u);
   CAMLreturn(Val_unit);
