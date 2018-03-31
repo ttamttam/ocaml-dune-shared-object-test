@@ -31,12 +31,12 @@ val substract: int -> int -> int
   * test
   * clean
   
-* automatic/ contains interesting stuff
+* automatic/
 
-  This directory contains a more portable way to build ~direct.so~.
+  This directory contains a portable `dune` way to build ~direct.so~.
 
 ** test/
 
    This directory contains a C test file that makes use of ~direct.so~.
 
-   To test, just do ~make test~:
+   To test, just do ~make test~.
