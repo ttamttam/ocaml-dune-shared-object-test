@@ -1,0 +1,8 @@
+(rule
+  (targets direct.ml)
+  (action (write-file %{targets} "")))
+
+(executable
+  (name direct)
+  (libraries mylibstubed)
+  (modes shared_object))

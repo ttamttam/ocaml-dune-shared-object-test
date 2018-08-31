@@ -15,7 +15,7 @@ Tests were performed with development version of =jbuilder=:
 : $ jbuilder --version
 : 1.0+beta19-33-g73231bf
 
-The current version has been adapted for =dune= (work in progress…).
+The current version has been adapted for =dune=.
 
 The =lib/= directory is there to provide a two functions pure =OCaml= lib:
 =mylib=, which is to be shared to =C= users (I'll jump later to a more complex
@@ -32,7 +32,7 @@ val substract: int -> int -> int
   * help
   * test
   * clean
-  
+
 * automatic/
 
   This directory contains a portable `dune` way to build ~direct.so~.

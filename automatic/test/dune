@@ -1,0 +1,18 @@
+(rule
+ (targets montest.exe)
+ (deps
+    %{workspace_root}/automatic/dll/direct%{ext_dll}
+    %{workspace_root}/automatic/libstubed/myclib.h
+    test.c)
+ (action
+  (progn
+   (copy %{workspace_root}/automatic/libstubed/myclib.h myclib.h)
+   (copy %{workspace_root}/automatic/dll/direct%{ext_dll} direct%{ext_dll})
+   (run %{cc} -o %{targets} -Wl,-rpath,. direct%{ext_dll} test.c)
+ ))
+)
+
+(alias
+ (name runautomatictest)
+ (deps montest.exe)
+ (action (run %{deps})))

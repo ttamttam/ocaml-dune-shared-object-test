@@ -1,7 +1,0 @@
-(jbuild_version 1)
-(library(
-        (name mylibstubed)
-        (libraries (mylib))
-        (c_names (mylib_stub))
-        (library_flags (:standard -linkall))
-))

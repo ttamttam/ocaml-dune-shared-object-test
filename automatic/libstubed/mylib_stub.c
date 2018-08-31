@@ -4,26 +4,10 @@
 
 #include "myclib.h"
 
-static int mylib_init_done = 0;
-
-// Fake function declared in the .ml file, but never used
-// (this is to force the linking of this C file)
-value dummy(value u){
-  CAMLparam1(u);
-  CAMLreturn(Val_unit);
-}
-
-int init_done(){
-  return mylib_init_done;
-}
-
-void init_mylib(){
-  char_os *vide[1];
-  vide[0] = NULL;
-  if (!mylib_init_done){
-    caml_startup(vide);
-    mylib_init_done = 1;
-  }
+__attribute__((__constructor__))
+void init_mylib(void){
+  char_os *vide[1] = { NULL };
+  caml_startup(vide);
 }
 
 int do_add(int a, int b){

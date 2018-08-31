@@ -2,11 +2,11 @@
 
 help:
 	@echo "make targets:"
-	@echo " - test: build and test the automatic portable way"
+	@echo " - test: build and test"
 	@echo " - clean"
 
 test:
-	jbuilder build @runautomatictest
+	dune build @runautomatictest
 
 clean:
-	jbuilder clean
+	dune clean
