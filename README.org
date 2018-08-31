@@ -4,7 +4,7 @@ Quite often, I'm sharing my =OCaml= work as standard shared objects (aka =.so= o
 =.dll=). I recently manage to compile such a project with =dune=.
 
 A ~shared_object~ linking mode was recently added to [[https://github.com/ocaml/dune][dune]]. I tried to take
-advantage of it to simplify my =jbuild= files. Without success.
+advantage of it to simplify my +jbuild+ dune files. Without success. :-(
 
 I'm creating the current project, in order to understand how to set things (and
 get help on a concrete project).
@@ -14,6 +14,8 @@ get help on a concrete project).
 Tests were performed with development version of =jbuilder=:
 : $ jbuilder --version
 : 1.0+beta19-33-g73231bf
+
+The current version has been adapted for =dune= (work in progress…).
 
 The =lib/= directory is there to provide a two functions pure =OCaml= lib:
 =mylib=, which is to be shared to =C= users (I'll jump later to a more complex
